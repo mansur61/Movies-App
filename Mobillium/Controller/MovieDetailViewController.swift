@@ -10,6 +10,7 @@ import UIKit
 import  Kingfisher
 class MovieDetailViewController: UIViewController {
 
+    // modals
     var moviesDetailsDataSource = MoviesDetails()
     var moviesDetailsData:MoviesDetailsData?
     
@@ -59,7 +60,7 @@ class MovieDetailViewController: UIViewController {
         
         let vc = segue.destination as! MovieDetailViewController
         guard let row = simillarCollection.indexPathsForSelectedItems?.first?.row  else { return }
-        print("ROWWW   \(row) ")
+        //print("ROWWW   \(row) ")
         guard let urunID = self.similarData?.results[row].id else {return}
         vc.move_id = urunID
         
@@ -67,11 +68,14 @@ class MovieDetailViewController: UIViewController {
 
 
 }
+
+//“movie/{movie_id}” , “movie/{movie_id}\similar”. verileri alındı .
 extension MovieDetailViewController: MoviesDeatilsDelegate,SimilarMoviesDelegate{
     
     func GetMoviesDetails(moviesDataDetails:MoviesDetailsData){
         
         self.moviesDetailsData = moviesDataDetails
+        // “movie/{movie_id}” verileri gösterildi
         let movDeatils = MoviesViewCell()
         movDeatils.configure(moviesDataDetails: moviesDetailsData, movDetailInfo: self.movDetailInfo, moveDetailDesc: self.moveDetailDesc, movDetailRes: self.movDetailRes, tmdbPuan: self.tmdbPuan, moviestarih: self.tarih)
     }
@@ -81,6 +85,7 @@ extension MovieDetailViewController: MoviesDeatilsDelegate,SimilarMoviesDelegate
         
     }
 }
+// “movie/{movie_id}\similar” gösterildi
 extension MovieDetailViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,23 +97,16 @@ extension MovieDetailViewController: UICollectionViewDataSource,UICollectionView
             return 2
         }
         
-    }
+}
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = simillarCollection.dequeueReusableCell(withReuseIdentifier: "similarCell", for: indexPath) as! SimilarCollectionViewCell
     
-        cell.configure(similarData: similarData, row: indexPath.row)
+            cell.configure(similarData: similarData, row: indexPath.row)
         
         return cell
     }
-    /*
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        
-    }
- */
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

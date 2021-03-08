@@ -11,9 +11,10 @@ import Kingfisher
 class SliderCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sliderRes: UIImageView!
-    
-    
     @IBOutlet weak var sliderTitle: UILabel!
+    
+    var size:String = "w500"
+    var baseUrl:String = "https://image.tmdb.org/t/p/"
     
     func configure(slidersData:SliderListData?,row:Int){
         
@@ -21,7 +22,7 @@ class SliderCollectionViewCell: UICollectionViewCell {
             let title = slidersData?.results[row].title{
             
             self.sliderTitle.text = title
-            self.sliderRes.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w300/\(sliderImg)"))
+            self.sliderRes.kf.setImage(with: URL(string: "\(baseUrl)\(size)\(sliderImg)"))
             //image = UIImage(named: sliderImg)
         }
     }

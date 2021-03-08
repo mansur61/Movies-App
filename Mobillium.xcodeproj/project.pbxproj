@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		330803D925F3965500A017F8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330803D825F3965500A017F8 /* SearchViewController.swift */; };
 		330803DC25F3968100A017F8 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330803DB25F3968100A017F8 /* MovieDetailViewController.swift */; };
-		3308469925F490AB005E9F34 /* SerachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3308469825F490AB005E9F34 /* SerachTableViewCell.swift */; };
 		3308469B25F4A768005E9F34 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 3308469A25F4A767005E9F34 /* star.png */; };
-		3320D2B825F664F000745573 /* ListSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320D2B725F664F000745573 /* ListSearchTableViewCell.swift */; };
-		3320D2BA25F66BE800745573 /* DenemeListSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320D2B925F66BE800745573 /* DenemeListSearchController.swift */; };
 		3320D2BC25F6A0CD00745573 /* MoviesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320D2BB25F6A0CD00745573 /* MoviesViewCell.swift */; };
 		3320D2BE25F6A93700745573 /* Icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 3320D2BD25F6A93700745573 /* Icon-1024.png */; };
+		3320D2C225F6EA5200745573 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320D2C125F6EA5200745573 /* SearchTableViewCell.swift */; };
 		333B44D325F24A5500AF3923 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B44D225F24A5500AF3923 /* AppDelegate.swift */; };
 		333B44D525F24A5500AF3923 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B44D425F24A5500AF3923 /* SceneDelegate.swift */; };
 		333B44D725F24A5500AF3923 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B44D625F24A5500AF3923 /* ListViewController.swift */; };
@@ -66,12 +64,10 @@
 		1CA8EEFCEE6263154FA2B1DF /* Pods_Mobillium.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mobillium.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		330803D825F3965500A017F8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		330803DB25F3968100A017F8 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
-		3308469825F490AB005E9F34 /* SerachTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachTableViewCell.swift; sourceTree = "<group>"; };
 		3308469A25F4A767005E9F34 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
-		3320D2B725F664F000745573 /* ListSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchTableViewCell.swift; sourceTree = "<group>"; };
-		3320D2B925F66BE800745573 /* DenemeListSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenemeListSearchController.swift; sourceTree = "<group>"; };
 		3320D2BB25F6A0CD00745573 /* MoviesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewCell.swift; sourceTree = "<group>"; };
 		3320D2BD25F6A93700745573 /* Icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-1024.png"; sourceTree = "<group>"; };
+		3320D2C125F6EA5200745573 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		333B44CF25F24A5500AF3923 /* Mobillium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mobillium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333B44D225F24A5500AF3923 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		333B44D425F24A5500AF3923 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 				333B44D625F24A5500AF3923 /* ListViewController.swift */,
 				330803D825F3965500A017F8 /* SearchViewController.swift */,
 				330803DB25F3968100A017F8 /* MovieDetailViewController.swift */,
-				3320D2B925F66BE800745573 /* DenemeListSearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,11 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				335603C125F43D480009A731 /* OtherListsTableViewCell.swift */,
-				3308469825F490AB005E9F34 /* SerachTableViewCell.swift */,
 				33EF13C725F4D81B00881DEB /* SimilarCollectionViewCell.swift */,
 				337CEC5325F500B2002E8CEB /* SliderCollectionViewCell.swift */,
-				3320D2B725F664F000745573 /* ListSearchTableViewCell.swift */,
 				3320D2BB25F6A0CD00745573 /* MoviesViewCell.swift */,
+				3320D2C125F6EA5200745573 /* SearchTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,9 +503,8 @@
 				333B451425F29BF500AF3923 /* MoviesDetails.swift in Sources */,
 				333B44D725F24A5500AF3923 /* ListViewController.swift in Sources */,
 				333B450C25F2843800AF3923 /* SimilarMoviesData.swift in Sources */,
+				3320D2C225F6EA5200745573 /* SearchTableViewCell.swift in Sources */,
 				333B451025F29BC700AF3923 /* Slider.swift in Sources */,
-				3320D2BA25F66BE800745573 /* DenemeListSearchController.swift in Sources */,
-				3320D2B825F664F000745573 /* ListSearchTableViewCell.swift in Sources */,
 				330803D925F3965500A017F8 /* SearchViewController.swift in Sources */,
 				33EF13C825F4D81B00881DEB /* SimilarCollectionViewCell.swift in Sources */,
 				333B44D325F24A5500AF3923 /* AppDelegate.swift in Sources */,
@@ -519,7 +512,6 @@
 				333B450A25F25D4E00AF3923 /* OtherListData.swift in Sources */,
 				337CEC5425F500B2002E8CEB /* SliderCollectionViewCell.swift in Sources */,
 				333B450625F25C7A00AF3923 /* SearchData.swift in Sources */,
-				3308469925F490AB005E9F34 /* SerachTableViewCell.swift in Sources */,
 				335603C225F43D480009A731 /* OtherListsTableViewCell.swift in Sources */,
 				333B44D525F24A5500AF3923 /* SceneDelegate.swift in Sources */,
 			);

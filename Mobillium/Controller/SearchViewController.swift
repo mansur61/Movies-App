@@ -10,18 +10,17 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    let searchController = UISearchController(searchResultsController: nil)
     
+    // modals
     var searchDataSource = Search()
     var searchsData:SearchData?
     
     var dataVeri:[String] = []
     var filterData: [String] = []
-    var durum:Bool = true
     
-    
+    // views
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var warmingLbl: UILabel!
-    @IBOutlet weak var searchBarView: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
     override func viewDidLoad() {
@@ -66,11 +65,11 @@ class SearchViewController: UIViewController {
  
 
 }
+// “/search/movie”. verileri alındı modaldan
 extension SearchViewController: SearchMoviesDelegate{
     
     func GetSearchMoviesName(searchData:SearchData){
         self.searchsData = searchData
-       // print("searchsData -> \(searchsData)" )
         if let total = self.searchsData?.results.count {
             for i in 0..<total {
                 if let searchTitle = self.searchsData?.results[i].title{
@@ -93,13 +92,6 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("cell id: ",indexPath.row)
         
-        /*
-        let vc = storyboard?.instantiateViewController(identifier: "moviesDetails") as! MovieDetailViewController
-        if  let yolla = self.searchsData?.results[indexPath.row].id{
-             vc.move_id? = yolla
-        }
-       */
-        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
@@ -112,7 +104,7 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchPagesCell", for: indexPath) as! SerachTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchPagesCell", for: indexPath) as! SearchTableViewCell
         
         
         if filterData.count != 0 {
@@ -126,10 +118,10 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource{
         
     }
 }
+// SEARCH İŞLMLERİ TAMAMLANDI
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-
         searchBar.text = ""
         if searchBar.text == "" {
             
@@ -142,8 +134,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
   
-        //filterData = []
-        //print("searchText -> \(searchText)")
+        
         if searchText != "" && searchText.count > 2 {
             
             self.searchDataSource.getSearch(query: searchText)

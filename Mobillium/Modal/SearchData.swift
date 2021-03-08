@@ -8,7 +8,6 @@
 
 import Foundation
 
-// https://api.themoviedb.org/3/search/movie?api_key=063da539b9dcfd75e3f3107755d9936a&query=Marria
 // query -> required -> aranacak kelime gir, minLength = 1
 // GET /search/movie
 struct SearchData:Codable {

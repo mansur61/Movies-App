@@ -7,7 +7,6 @@
 //
 
 import Foundation
-// https://api.themoviedb.org/3/movie/{movie_id}?api_key=063da539b9dcfd75e3f3107755d9936a
 // GET movie/{movie_id}
 struct MoviesDetailsData:Codable {
     

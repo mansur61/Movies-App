@@ -26,15 +26,13 @@ class OtherData: NSObject {
         let url:String = "https://api.themoviedb.org/3/movie/upcoming?api_key=063da539b9dcfd75e3f3107755d9936a"
                 
         AF.request(url,method: .get,parameters: nil,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { (responseData) in
-            //print("We got the response")
-            //print(responseData.result)
+            
             guard let data = responseData.data else{return}
             
                do{
                    
                    let getOhersData = try JSONDecoder().decode(OtherListData.self, from: data)
-                   // print("ula veriii :",getOhersData)
-                 
+                  
                 self.delegate?.GetOtherDataMovies(otherData:getOhersData)
             
                }catch{

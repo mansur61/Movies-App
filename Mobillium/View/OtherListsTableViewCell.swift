@@ -17,6 +17,9 @@ class OtherListsTableViewCell: UITableViewCell {
     @IBOutlet weak var otherMovImage: UIImageView!
     @IBOutlet weak var otherTarih: UILabel!
     
+    var size:String = "original"
+    var baseUrl:String = "https://image.tmdb.org/t/p/"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +34,8 @@ class OtherListsTableViewCell: UITableViewCell {
 
     func config(othersData:OtherListData?,row:Int){
         
+        
+        
         if let otherTitle = othersData?.results[row].title , let otherADesc = othersData?.results[row].overview ,
             let otherImage = othersData?.results[row].poster_path,
         let othertarih = othersData?.results[row].release_date{
@@ -38,7 +43,7 @@ class OtherListsTableViewCell: UITableViewCell {
             self.otherMovTitle.text = otherTitle
              self.otherTarih.text = othertarih
             self.otherMovDesc.text = otherADesc
-           self.otherMovImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(otherImage)"))
+           self.otherMovImage.kf.setImage(with: URL(string: "\(baseUrl)\(size)\(otherImage)"))
             // self.otherMovImage.kf.setImage(with: URL(string: "\(otherImage)"))
             //image = UIImage(named: otherImage) //KingFisher kullanılacak
             
@@ -49,7 +54,7 @@ class OtherListsTableViewCell: UITableViewCell {
         if let title = titleData?[row]{
             self.otherMovTitle.text = title
             self.otherMovDesc.text = overviewData[row]
-            self.otherMovImage.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(imgData[row])"))
+            self.otherMovImage.kf.setImage(with: URL(string: "\(baseUrl)\(size)\(imgData[row])"))
                 //UIImage(named: imgData[row]) //KingFisher kullanılacak
             
         }

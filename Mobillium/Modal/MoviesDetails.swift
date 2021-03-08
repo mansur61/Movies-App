@@ -25,15 +25,14 @@ class MoviesDetails: NSObject {
         let url:String = "https://api.themoviedb.org/3/movie/\(movie_id)?api_key=063da539b9dcfd75e3f3107755d9936a"
         print("url ->\(url)")
         AF.request(url,method: .get,parameters: nil,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { (responseData) in
-            //print("We got the response")
+           
             print(responseData.result)
             guard let data = responseData.data else{return}
             
                do{
                    
                    let getMoviesDetailLists = try JSONDecoder().decode(MoviesDetailsData.self, from: data)
-                    //print("ula veriii :",getMoviesDetailLists)
-                 
+                    
                 self.delegate?.GetMoviesDetails(moviesDataDetails:getMoviesDetailLists)
             
                }catch{

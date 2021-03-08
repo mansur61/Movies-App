@@ -7,7 +7,6 @@
 //
 
 import Foundation
-// https://api.themoviedb.org/3/movie/now_playing?api_key=063da539b9dcfd75e3f3107755d9936a
 //GET movie/now_playing
 struct  SliderListData: Codable {
     

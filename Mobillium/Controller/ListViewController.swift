@@ -12,7 +12,7 @@ import Kingfisher
 
 class ListViewController: UIViewController {
 
-    let searchController = UISearchController(searchResultsController: nil)
+    
     
     var sliderMoivesDataSource = Slider()
     var otherMoviesDataSource = OtherData()
@@ -30,6 +30,7 @@ class ListViewController: UIViewController {
     var durum:Bool = true
     
     // VİEW
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var otherTableView: UITableView!
     @IBOutlet weak var pageView: UIPageControl!
     @IBOutlet weak var sliderCollection: UICollectionView!
@@ -82,8 +83,9 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        
-        sliderMoivesDataSource.getSlider()
         otherMoviesDataSource.getOtherData()
+        sliderMoivesDataSource.getSlider()
+       
                 
         DispatchQueue.main.async {
             self.otherTableView.reloadData()
@@ -104,12 +106,12 @@ class ListViewController: UIViewController {
 
 }
 
-
+// “/movie/now_playing” , “/movie/upcoming”. veerilerini alma
 
 extension ListViewController: SliderMoviesDelegate,OtherMoviesDelegate, SearchMoviesDelegate{
     
     func GetSliderMovies(sliderMovData: SliderListData){
-        //print("slider veriler -> \(sliderMovData)")
+       
           self.slidersData = sliderMovData
         
         if let total = slidersData?.results.count{
@@ -124,7 +126,10 @@ extension ListViewController: SliderMoviesDelegate,OtherMoviesDelegate, SearchMo
        
       func GetOtherDataMovies(otherData:OtherListData){
           self.othersData = otherData
-        //print("otherData count durum-> \(String(describing: self.othersData?.results.count))")
+        print("othersData -> \(String(describing: othersData))")
+        DispatchQueue.main.async {
+            self.otherTableView.reloadData()
+        }
       }
         
       func GetSearchMoviesName(searchData:SearchData){
@@ -145,7 +150,6 @@ extension ListViewController: SliderMoviesDelegate,OtherMoviesDelegate, SearchMo
         filterData = self.dataVeri
        
         self.durum = false
-        //print("GetSearchMoviesName da durum ,",durum)
         DispatchQueue.main.async {
             self.otherTableView.reloadData()
         }
@@ -153,13 +157,12 @@ extension ListViewController: SliderMoviesDelegate,OtherMoviesDelegate, SearchMo
     }
     
 }
-
+// “/movie/now_playing”  verilerini gösterme
 extension ListViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: sliderCollection.frame.width/2.5, height: sliderCollection.frame.width/2)
-        
     }
     
     
@@ -186,7 +189,7 @@ extension ListViewController:UICollectionViewDataSource,UICollectionViewDelegate
     
     
 }
-
+// “/movie/upcoming” verilerini gösterme
 extension ListViewController: UITableViewDelegate,UITableViewDataSource{
     
     
@@ -196,14 +199,12 @@ extension ListViewController: UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        if let total = self.othersData?.results.count{
+        if (durum){
+            guard let total = othersData?.results.count else {  return 1}
             return total
+        
         }else{
-            if self.filterData.count != 0{
-                return self.filterData.count
-            }
-            guard let otherList = self.othersData?.results.count else{return 1}
-            return otherList
+             return filterData.count
         }
     }
     
@@ -220,6 +221,7 @@ extension ListViewController: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
 }
+// SEARCH BAR'DA ARAMA YAPTIRILARAK GÖSTERİM DİNMAİK OLARAK SAĞLANDI
 extension ListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -243,10 +245,9 @@ extension ListViewController: UISearchBarDelegate {
                     filterData.append(ad)
                 }
             }
-           // print("filterData 1-> \(filterData.count) -> searchText : \(searchText) => searchText.count: \(searchText.count)")
         }else{
             filterData=dataVeri
-            // print("filterData 2-> \(filterData.count) -> searchText : \(searchText) => searchText.count: \(searchText.count)")
+            
         }
         self.otherTableView.reloadData()
     }

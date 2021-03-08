@@ -27,11 +27,12 @@ class  Search: NSObject {
             let url:String = "https://api.themoviedb.org/3/search/movie?api_key=063da539b9dcfd75e3f3107755d9936a&query=\(query)"
             print("url -> \(url)")
             
+            // parameters değerine params ataanarak ta yapılabilir. Üsteki kullanımı tercih edildi.
             /*   let params =
-                                  [
-                                      "api_key":"063da539b9dcfd75e3f3107755d9936a",
-                                      "query":"\(query)"
-                                  ]
+              [
+                  "api_key":"063da539b9dcfd75e3f3107755d9936a",
+                  "query":"\(query)"
+              ]
              */
         
            AF.request(url,method: .get,parameters: nil,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { (responseData) in
@@ -51,13 +52,6 @@ class  Search: NSObject {
                                 print("Api verileri ile uyuşmazlık olmuş olabilir..")
                            }
                     }
-                    
-              /*
-                }else{
-                    print("AF ERROR ->",responseData.error.debugDescription)
-                }
-            */
-            
             }
         }else{
             print("query must be provided")
